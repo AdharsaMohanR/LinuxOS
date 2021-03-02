@@ -21,15 +21,15 @@ int isPrime(int k)
  
 
 int ispalindrome(int n){
-    int r,sum=0,temp;
-    temp=n;
+    int r,s=0,tmp;
+    tmp=n;
     while(n>0)    
     {    
         r=n%10;    
-        sum=(sum*10)+r;    
+        s=(s*10)+r;    
         n=n/10;    
     }    
-    if(temp==sum)    
+    if(tmp==s)    
        return 1; 
     else     
        return 0;  
