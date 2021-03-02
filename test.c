@@ -17,7 +17,7 @@ int main() {
       printf("the number is palindrome\n");
 
 
-  printf("factorial of %d is %d \n",fact,factorial(f));
+  printf("factorial of %d is %d \n",f,factorial(f));
 
   printf("setting %d th of %d is %d \n",k,num1,set(num1,k));
   printf("setting %d th of %d is %d \n",k,num1,clear(num1,k));
