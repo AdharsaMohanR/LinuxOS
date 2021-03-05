@@ -1,39 +1,85 @@
-#include<unistd.h>
-#include<sys/wait.h>
-#include<stdlib.h>
-#include<stdio.h>
+#include "processes.h"
+#define length 1024
+void mini_Shell() {
+  char lineslength]; 
+  char *argv[100];      
 
-int main()
-{
-	int ret,s;
-	printf("Pid=%d\n",getpid());
-	ret=fork();
-	if(ret<0)
-	{
-		perror("fork");
-		exit(1);
-	}
-	if(ret==0)
-	{
-        int p;
-        char str[20];
-        scanf("%s",str);
-        p=execl("/usr/bin/pwd",str,NULL);
-		if(p<0)
-		{
-			perror("execl");
-			exit(1);
-		
-        }
-        exit(5);
-	}
-	else	
-	{
-		printf("Pid=%d,Ppid=%d\n",
-			getpid(),getppid());
-		waitpid(-1,&s,0); 
-		printf("exit status=%d\n",
-			WEXITSTATUS(s));
-	}
-	return 0;
+  // ** set path at bin
+  char *p = "/bin/";
+
+   // ** full file path  
+  char p_path[30];
+
+   // ** arg count
+  int argc;             
+
+
+  while (1) {
+    printf("shell>> "); 
+  if (!fgets(line, lengt, stdin))
+      break;
+
+    size_t length = strlen(lines);
+	  if(lines[length-1]=='\n)
+	     line[length - 1] = '\0';
+ 
+
+    if (strcmp(lines "exit") == 0) { 
+     
+      break;
+    }
+
+    char *t; 
+    
+    // ** split command into separate strings
+    t= strtok(line, " ");
+    int k= 0;
+    while (t!= NULL) {
+      argv[i] = t;
+      t = strtok(NULL, " ");
+      k++;
+    }
+
+    argv[k]=NULL;
+
+    argc = k;
+    
+    // ** get arg count
+    for (k=0; k< argc; k++){
+
+      // ** print command/args
+      printf("%s\n", argv[k]);
+    }
+
+    // ** copy /bin/ to file path
+    strcpy(p_path, p);   
+    
+    // ** add program to path
+    strcat(p_pathv[0]); 
+
+    for (i = 0; i < strlen(p_path);k++){
+     
+      if (p_path[k]== '\n') {
+        p_path[k]= '\0';
+      }
+    }
+    int process_id = fork(); 
+    //** fork child
+
+    if (process_id == 0) { 
+      
+      // ** Child
+      execvp(p_path,argv);
+      fprintf(stderr, " process could not do execvp\n");
+
+    }
+    
+     else { 
+       
+       //** Parent
+      wait(NULL);
+      printf(" exited\n");
+    }
+  }
 }
+
