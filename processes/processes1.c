@@ -21,7 +21,7 @@ void mini_Shell() {
 
     size_t length = strlen(lines);
 	  if(lines[length-1]=='\n)
-	     line[length - 1] = '\0';
+	     line[length - 1] = '\0' ;
  
 
     if (strcmp(lines "exit") == 0) { 
